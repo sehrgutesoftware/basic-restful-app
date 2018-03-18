@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +13,12 @@ use Illuminate\Http\Request;
 */
 
 // API V1
-Route::group(['name' => 'v1', 'prefix' => 'v1', 'namespace' => 'V1\Controllers'], function() {
-    Route::group(['prefix' => '/articles'], function() {
+Route::group(['name' => 'v1', 'prefix' => 'v1', 'namespace' => 'V1\Controllers'], function () {
+    Route::group(['prefix' => '/articles'], function () {
         Route::get('', ['as' => 'api.v1.articles.index', 'uses' => 'ArticlesController@index']);
         Route::get('/{id}', ['as' => 'api.v1.articles.show', 'uses' => 'ArticlesController@show']);
         Route::post('', ['as' => 'api.v1.articles.store', 'uses' => 'ArticlesController@store']);
+        Route::post('/many', ['as' => 'api.v1.articles.storeMany', 'uses' => 'ArticlesController@storeMany']);
         Route::put('/{id}', ['as' => 'api.v1.articles.update', 'uses' => 'ArticlesController@update']);
         Route::delete('/{id}', ['as' => 'api.v1.articles.destroy', 'uses' => 'ArticlesController@destroy']);
     });
